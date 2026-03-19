@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title> <!-- iniciar .\mvnw spring-boot:run  -  http://localhost:8080/ -->
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+        }
+
+        #box {
+            width: 80px;
+            height: 80px;
+            background: #ff4757;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="box"></div>
+
+<script>
+    let box = document.getElementById("box");
+
+    let x = 100;
+    let y = 100;
+    let speed = 5;
+
+    let keys = {};
+
+    document.addEventListener("keydown", (e) => {
+        keys[e.key] = true;
+    });
+
+    document.addEventListener("keyup", (e) => {
+        keys[e.key] = false;
+    });
+
+    function gameLoop() {
+
+        if (keys["ArrowRight"]) x += speed;
+        if (keys["ArrowLeft"]) x -= speed;
+        if (keys["ArrowUp"]) y -= speed;
+        if (keys["ArrowDown"]) y += speed;
+
+        x = Math.max(0, Math.min(window.innerWidth - 80, x));
+        y = Math.max(0, Math.min(window.innerHeight - 80, y));
+
+        box.style.left = x + "px";
+        box.style.top = y + "px";
+
+        requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
+</script>
+
+</body>
+</html>
