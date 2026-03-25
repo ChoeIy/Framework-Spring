@@ -19,7 +19,6 @@ O movimento é contínuo e limitado dentro da tela.
 * Java 17
 * Spring Boot
 * HTML / CSS
-* JavaScript
 
 ---
 
